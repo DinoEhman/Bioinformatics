@@ -1,0 +1,7 @@
+k=2
+aaaa
+tttt
+aaca
+tctt
+aa-a
+--tt
