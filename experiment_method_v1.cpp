@@ -8,11 +8,13 @@
 // metoda pronalzi u potpunosti J29B-1_M13F-pUC i J29B-3_M13F-pUC, ali ne J29B-6_M13F-pUC za J29_B_CE_IonXpress_005
 // metoda za jelenref01 napravi jednu zamjenu, jelenref02 u potpunosti, a kod jelenref04 jedno umetanje viska, 2 nepotrebna brisanja i 2 zamjene za J30_B_CE_IonXpress_006
 
-struct seq_msa {
-    std::string original;
-    std::string msa;
-};
-
+/**
+ * @author Dino Ehman
+ * Reads all sequences from fastq file and stores them in vector
+ * 
+ * @param file path
+ * @return vector with string elements
+ */
 std::vector<std::string> readFastQFile(std::string file)
 {
     std::ifstream fastq(file);
@@ -39,6 +41,13 @@ std::vector<std::string> readFastQFile(std::string file)
     return sequences;
 }
 
+/**
+ * @author Lovre Budimir
+ * Find sequences with most common length and all sequences with lenght in close range of most common length
+ * 
+ * @param sequences and range/2
+ * @return filtered sequences
+ */
 std::vector<std::string> find_sequences_with_most_common_length_plus_minus_n(std::vector<std::string> allSequences, int n){
 
     std::map<int, std::vector<std::string>> commonLengthMap;
@@ -82,6 +91,13 @@ std::vector<std::string> find_sequences_with_most_common_length_plus_minus_n(std
 
 }
 
+/**
+ * @author Luka Justic
+ * Calculate hamming distance between two strings
+ * 
+ * @param two strings
+ * @return distance 
+ */
 int calculate_distance(std::string s1, std::string s2){
 
     int i = 0, count = 0; 
@@ -95,6 +111,13 @@ int calculate_distance(std::string s1, std::string s2){
 
 }
 
+/**
+ * @author Lovre Budimir
+ * Remove all clusters with less then s elements
+ * 
+ * @param clusters and min number of elements in cluster
+ * @return clusters
+ */ 
 std::map<int, std::vector<std::string>> filter_clusters(std::map<int, std::vector<std::string>> clusters, int s) {
 
 
@@ -112,6 +135,13 @@ std::map<int, std::vector<std::string>> filter_clusters(std::map<int, std::vecto
 
 }  
 
+/**
+ * @author Lovre Budimir
+ * Find elements from multiple sequence alignment with k distance and make them centroids for clusters
+ * 
+ * @param multiple sequence alignment and distance
+ * @return centorids
+ */
 std::map<int, std::string> init_clusters(std::vector<std::string> msa, int k){
 
     std::map<int, std::string> centroids;
@@ -146,6 +176,14 @@ std::map<int, std::string> init_clusters(std::vector<std::string> msa, int k){
 
 }
 
+/**
+ * @author Lovre Budimir
+ * Iterate over all elements in multiple sequence alignment and if the distance between centroid and element is less then k
+ * add element to the cluster
+ * 
+ * @param multiple sequence alignment, centorid and distance
+ * @return clusters
+ */
 std::map<int, std::vector<std::string>> create_clusters(std::vector<std::string> msa, std::map<int, std::string> centroids, int k){
 
     std::map<int, std::vector<std::string>> clusters;
@@ -168,6 +206,13 @@ std::map<int, std::vector<std::string>> create_clusters(std::vector<std::string>
     return clusters;
 }
 
+/**
+ * @author Lovre Budimir
+ * Remove all '-' from strings
+ * 
+ * @param clusters
+ * @return clusters with elements without '-' in string
+ */
 std::map<int, std::vector<std::string>> clean_clusters(std::map<int, std::vector<std::string>> clusters){
 
     for(std::map<int, std::vector<std::string>>::iterator it = clusters.begin(); it != clusters.end(); it++){
