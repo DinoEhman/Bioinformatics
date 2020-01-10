@@ -3,6 +3,14 @@
 #include <fstream>
 #include <map>
 #include "spoa/spoa.hpp"
+
+/**
+ * @author Dino Ehman
+ * Reads all sequences from fastq file and stores them in vector
+ * 
+ * @param file path
+ * @return vector with string elements
+ */
 std::vector<std::string> readFastQFile(std::string file)
 {
     std::ifstream fastq(file);
@@ -28,6 +36,14 @@ std::vector<std::string> readFastQFile(std::string file)
     }
     return sequences;
 }
+
+/**
+ * @author Lovre Budimir
+ * Find sequences with most common length and all sequences with lenght in close range of most common length
+ * 
+ * @param sequences and range/2
+ * @return filtered sequences
+ */
 
 std::vector<std::string> find_sequences_with_most_common_length(std::vector<std::string> allSequences){
 
@@ -55,25 +71,10 @@ std::vector<std::string> find_sequences_with_most_common_length(std::vector<std:
         }
     }
 
-    // fprintf(stderr, "NUmber of 296 sequences (%zu)\n", commonLengthMap[296].size());
-    // fprintf(stderr, "NUmber of 295 sequences (%zu)\n", commonLengthMap[295].size());
-    // fprintf(stderr, "NUmber of 294 sequences (%zu)\n", commonLengthMap[294].size());
-    // fprintf(stderr, "NUmber of 293 sequences (%zu)\n", commonLengthMap[293].size());
-    // fprintf(stderr, "NUmber of 292 sequences (%zu)\n", commonLengthMap[292].size());
-    // fprintf(stderr, "NUmber of 291 sequences (%zu)\n", commonLengthMap[291].size());
-    // fprintf(stderr, "NUmber of 297 sequences (%zu)\n", commonLengthMap[297].size());
-    // fprintf(stderr, "NUmber of 298 sequences (%zu)\n", commonLengthMap[298].size());
-    // fprintf(stderr, "NUmber of 299 sequences (%zu)\n", commonLengthMap[299].size());
-    // fprintf(stderr, "NUmber of 300 sequences (%zu)\n", commonLengthMap[300].size());
-    // fprintf(stderr, "NUmber of 301 sequences (%zu)\n", commonLengthMap[301].size());
-
     return result;
-
 }
 
 std::map<int, std::vector<std::string>> filter_clusters(std::map<int, std::vector<std::string>> clusters, int s) {
-
-    //std::map<int, std::vector<std::string>> filtered;
 
     for(std::map<int, std::vector<std::string>>::iterator it = clusters.begin(); it != clusters.end(); ){
 
@@ -84,9 +85,7 @@ std::map<int, std::vector<std::string>> filter_clusters(std::map<int, std::vecto
         }
 
     }
-
     return clusters;
-
 }   
 
 
