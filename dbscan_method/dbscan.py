@@ -3,8 +3,6 @@ import numpy as np
 from sklearn.cluster import dbscan
 import sys
 
-EPS = [3,4,5,6,7]
-
 def load_data(path):
     with open(path, 'r') as file:  
         lines = file.readlines()
@@ -19,7 +17,7 @@ def load_data(path):
 
 path_to_data = sys.argv[1]
 data = load_data(path_to_data)
-print(len(data))
+print("dbscan started with",len(data),"alels")
 
 def lev_metric(x, y):
      i, j = int(x[0]), int(y[0])     # extract indices
@@ -27,32 +25,28 @@ def lev_metric(x, y):
 
 X = np.arange(len(data)).reshape(-1, 1)
 
-for eps in EPS:
-    items, labels = dbscan(X, metric=lev_metric, eps=eps, min_samples=3, algorithm='brute')
+items, labels = dbscan(X, metric=lev_metric, eps=int(sys.argv[2]), min_samples=int(sys.argv[3]), algorithm='brute')
 
-    #print("Items: ", items)
-    #print("Labels: ", labels)
+#print("Items: ", items)
+#print("Labels: ", labels)
 
-    clusters = {}
+clusters = {}
 
-    for index, label in enumerate(labels):
-        if label == -1:
-            continue
-        
-        if label not in clusters:
-            clusters[label] = []
+for index, label in enumerate(labels):
+    if label == -1:
+        continue
+    
+    if label not in clusters:
+        clusters[label] = []
 
-        print(index)
-        clusters[label].append(data[index])
+    print(index)
+    clusters[label].append(data[index])
 
-    #print(clusters)
-    print("Done with eps: ",eps)
-
-    # Write clusters to a file
-    with open('output_30_eps_{}.txt'.format(eps), 'x') as file:  # Use file to refer to the file object
-        for key in clusters:
-            values = clusters[key]
-            for value in values:
-                file.write(str(key)+"\n")
-                file.write(value+"\n")
+# Write clusters to a file
+with open(sys.argv[4], 'x') as file:  # Use file to refer to the file object
+    for key in clusters:
+        values = clusters[key]
+        for value in values:
+            file.write(str(key)+"\n")
+            file.write(value+"\n")
 

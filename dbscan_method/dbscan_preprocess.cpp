@@ -96,11 +96,11 @@ std::vector<std::string> find_sequences_with_most_common_length_plus_minus_n(std
 
 int main(int argc, char **argv){
 
-    std::vector<std::string> allSequences = readFastQFile("./J29_B_CE_IonXpress_005.fastq");
+    std::vector<std::string> allSequences = readFastQFile(argv[1]);
 
     std::vector<std::string> sequences = find_sequences_with_most_common_length_plus_minus_n(allSequences, 5);
 
-    std::ofstream outfile ("dbscan_data.txt");
+    std::ofstream outfile (argv[2]);
 
     for(std::vector<std::string>::iterator it = sequences.begin(); it != sequences.end(); ++it){
         std::string current = (*it);
