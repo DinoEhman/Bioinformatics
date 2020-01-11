@@ -1,6 +1,9 @@
 from leven import levenshtein       
 import numpy as np
 from sklearn.cluster import dbscan
+import sys
+
+EPS = [3,4,5,6,7]
 
 def load_data(path):
     with open(path, 'r') as file:  
@@ -14,7 +17,8 @@ def load_data(path):
 
 #data = ["ACCTCCTAGAAG", "ACCTACTAGAAGTT", "GAATATTAGGCCGA"]
 
-data = load_data("dbscan_data.txt")
+path_to_data = sys.argv[1]
+data = load_data(path_to_data)
 print(len(data))
 
 def lev_metric(x, y):
@@ -23,30 +27,32 @@ def lev_metric(x, y):
 
 X = np.arange(len(data)).reshape(-1, 1)
 
-items, labels = dbscan(X, metric=lev_metric, eps=5, min_samples=50, algorithm='brute')
+for eps in EPS:
+    items, labels = dbscan(X, metric=lev_metric, eps=eps, min_samples=3, algorithm='brute')
 
-#print("Items: ", items)
-print("Labels: ", labels)
+    #print("Items: ", items)
+    #print("Labels: ", labels)
 
-clusters = {}
+    clusters = {}
 
-for index, label in enumerate(labels):
-    if label == -1:
-        continue
-    
-    if label not in clusters:
-        clusters[label] = []
+    for index, label in enumerate(labels):
+        if label == -1:
+            continue
+        
+        if label not in clusters:
+            clusters[label] = []
 
-    print(index)
-    clusters[label].append(data[index])
+        print(index)
+        clusters[label].append(data[index])
 
-print(clusters)
+    #print(clusters)
+    print("Done with eps: ",eps)
 
-# Write clusters to a file
-with open('output.txt', 'x') as file:  # Use file to refer to the file object
-    for key in clusters:
-        values = clusters[key]
-        for value in values:
-            file.write(str(key)+"\n")
-            file.write(value+"\n")
+    # Write clusters to a file
+    with open('output_30_eps_{}.txt'.format(eps), 'x') as file:  # Use file to refer to the file object
+        for key in clusters:
+            values = clusters[key]
+            for value in values:
+                file.write(str(key)+"\n")
+                file.write(value+"\n")
 
