@@ -38,7 +38,7 @@ std::map<int, std::vector<std::string>> readKmeansOutput(std::string file){
     
 int main(int argc, char **argv){
 
-    std::map<int, std::vector<std::string>> clusters = readKmeansOutput(argv[1]);
+    std::map<int, std::vector<std::string>> clusters = readKmeansOutput(argv[6]);
 
     std::cout << clusters.size() << std::endl;
     

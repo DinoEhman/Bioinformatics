@@ -43,7 +43,7 @@ for index, label in enumerate(labels):
     clusters[label].append(data[index])
 
 # Write clusters to a file
-with open(sys.argv[4], 'x') as file:  # Use file to refer to the file object
+with open(sys.argv[4], 'w') as file:  # Use file to refer to the file object
     for key in clusters:
         values = clusters[key]
         for value in values:
