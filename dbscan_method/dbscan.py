@@ -15,7 +15,6 @@ def load_data(path):
 #data = ["ACCTCCTAGAAG", "ACCTACTAGAAGTT", "GAATATTAGGCCGA"]
 
 data = load_data("dbscan_data.txt")
-data = data[:500]
 print(len(data))
 
 def lev_metric(x, y):
