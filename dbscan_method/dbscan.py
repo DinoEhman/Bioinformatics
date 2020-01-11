@@ -8,15 +8,14 @@ def load_data(path):
 
     sequences = []
     for i, line in enumerate(lines):
-        if i % 4 == 1: 
-            sequences.append(line.strip())
+        sequences.append(line.strip())
 
     return sequences
 
 #data = ["ACCTCCTAGAAG", "ACCTACTAGAAGTT", "GAATATTAGGCCGA"]
 
-data = load_data('J30_B_CE_IonXpress_006.fastq')
-data = data[0:1000]
+data = load_data("dbscan_data.txt")
+data = data[:500]
 print(len(data))
 
 def lev_metric(x, y):
@@ -43,4 +42,12 @@ for index, label in enumerate(labels):
     clusters[label].append(data[index])
 
 print(clusters)
+
+# Write clusters to a file
+with open('output.txt', 'x') as file:  # Use file to refer to the file object
+    for key in clusters:
+        values = clusters[key]
+        for value in values:
+            file.write(str(key)+"\n")
+            file.write(value+"\n")
 
