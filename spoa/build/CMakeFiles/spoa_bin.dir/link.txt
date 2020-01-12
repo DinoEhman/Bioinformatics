@@ -1,1 +1,0 @@
-/usr/bin/c++    -Wall -Wextra -pedantic -march=native -O3 -DNDEBUG   CMakeFiles/spoa_bin.dir/src/sequence.cpp.o CMakeFiles/spoa_bin.dir/src/main.cpp.o  -o bin/spoa -rdynamic lib/libspoa.a vendor/bioparser/lib/libz.a 

@@ -1,1 +1,0 @@
-/usr/bin/cc  -O3 -DNDEBUG   CMakeFiles/minigzip64.dir/test/minigzip.o  -o ../../bin/minigzip64 -rdynamic ../../lib/libz.so.1.2.11 -Wl,-rpath,/home/lb-husar/bioinfo/spoa/build/vendor/bioparser/lib 
