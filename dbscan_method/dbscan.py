@@ -3,6 +3,15 @@ import numpy as np
 from sklearn.cluster import dbscan
 import sys
 
+'''
+Author @Luka Justic
+
+Algorithm reads sequences from file and then uses Dbscan algorithm with levenshtein distance to cluster 
+sequences.
+
+It writes clusters to a file.
+'''
+
 def load_data(path):
     with open(path, 'r') as file:  
         lines = file.readlines()
@@ -12,8 +21,6 @@ def load_data(path):
         sequences.append(line.strip())
 
     return sequences
-
-#data = ["ACCTCCTAGAAG", "ACCTACTAGAAGTT", "GAATATTAGGCCGA"]
 
 path_to_data = sys.argv[1]
 data = load_data(path_to_data)
@@ -26,9 +33,6 @@ def lev_metric(x, y):
 X = np.arange(len(data)).reshape(-1, 1)
 
 items, labels = dbscan(X, metric=lev_metric, eps=int(sys.argv[2]), min_samples=int(sys.argv[3]), algorithm='brute')
-
-#print("Items: ", items)
-#print("Labels: ", labels)
 
 clusters = {}
 
@@ -43,7 +47,7 @@ for index, label in enumerate(labels):
     clusters[label].append(data[index])
 
 # Write clusters to a file
-with open(sys.argv[4], 'w') as file:  # Use file to refer to the file object
+with open(sys.argv[4], 'w') as file: 
     for key in clusters:
         values = clusters[key]
         for value in values:
