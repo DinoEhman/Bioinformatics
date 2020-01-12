@@ -1,0 +1,1 @@
+/usr/bin/cc  -O3 -DNDEBUG   CMakeFiles/example64.dir/test/example.o  -o ../../bin/example64 -rdynamic ../../lib/libz.so.1.2.11 -Wl,-rpath,/home/lb-husar/bioinfo/spoa/build/vendor/bioparser/lib 
