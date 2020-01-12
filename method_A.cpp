@@ -389,7 +389,7 @@ void test_results(std::vector<std::string> expected, std::vector<std::string> pr
 
 int main(int argc, char **argv){
 
-    std::vector<std::string> allSequences = readFastQFile("./fastq/J29_B_CE_IonXpress_005.fastq");
+    std::vector<std::string> allSequences = readFastQFile("./fastq/J30_B_CE_IonXpress_006.fastq");
 
     std::vector<std::string> sequences = find_sequences_with_most_common_length_plus_minus_n(allSequences, 5);
 
@@ -423,7 +423,7 @@ int main(int argc, char **argv){
 
     if(test){
 
-        std::vector<std::string> expected = readFastaFile("./J29B_expected.fasta");
+        std::vector<std::string> expected = readFastaFile("./J30B_expected.fasta");
 
         test_results(expected, consensuses);
 
