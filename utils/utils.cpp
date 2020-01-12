@@ -1,8 +1,7 @@
 #include "utils.h"
-#include <map>
 #include <algorithm>
 #include "distance_functions.h"
-#include "../spoa/spoa.hpp"
+#include "spoa/spoa.hpp"
 
 
 /**

@@ -1,6 +1,6 @@
 #include "test.h"
 #include "distance_functions.h"
-#include "../spoa/spoa.hpp"
+#include "spoa/spoa.hpp"
 /**
  * @author Lovre Budimir
  * find corresponding consensus for every expected allele if possible

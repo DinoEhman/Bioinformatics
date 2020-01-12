@@ -1,5 +1,6 @@
 #include<vector>
 #include<string>
+#include<map>
 std::vector<std::string> find_sequences_with_most_common_length_plus_minus_n(std::vector<std::string> allSequences, int n);
 std::map<int, std::vector<std::string>> clean_clusters(std::map<int, std::vector<std::string>> clusters);
 std::map<int, std::vector<std::string>> filter_clusters(std::map<int, std::vector<std::string>> clusters, int s);

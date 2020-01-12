@@ -57,9 +57,9 @@ std::map<int, std::vector<std::string>> group_sequences(std::vector<std::string>
 int main(int argc, char **argv)
 {
 
-    std::vector<std::string> allSequences = readFastQFile("./fastq/J29_B_CE_IonXpress_005.fastq");
+    std::vector<std::string> allSequences = readFastQFile(argv[6]);
 
-    std::vector<std::string> sequences = find_sequences_with_most_common_length_plus_minus_n(allSequences, 5);
+    std::vector<std::string> sequences = find_sequences_with_most_common_length_plus_minus_n(allSequences, atoi(argv[7]));
 
     auto alignment_engine = spoa::createAlignmentEngine(static_cast<spoa::AlignmentType>(atoi(argv[1])), atoi(argv[2]), atoi(argv[3]), atoi(argv[4]), atoi(argv[5]));
 
@@ -75,10 +75,10 @@ int main(int argc, char **argv)
     graph->generate_multiple_sequence_alignment(msa);
 
     //pronadi sekvence koje su udaljene jedne od drugih za barem 30 i postavi ih kao pocetne centroide
-    std::map<int, std::string> centroids = init_clusters(msa, 30);
+    std::map<int, std::string> centroids = init_clusters(msa, atoi(argv[8]));
 
     //u cluster stavi poravnatu sekvencu ako se nalazi unutar k od centroida
-    std::map<int, std::vector<std::string>> clusters = create_clusters(msa, centroids, 15);
+    std::map<int, std::vector<std::string>> clusters = create_clusters(msa, centroids, atoi(argv[9]));
 
     //izracunaj consensuse (nove centroide) iz clustera
     std::vector<std::string> new_centroids = find_allels(clusters, atoi(argv[1]), atoi(argv[2]), atoi(argv[3]), atoi(argv[4]), atoi(argv[5]));
@@ -91,33 +91,23 @@ int main(int argc, char **argv)
     }
 
     //grupiraj nove centroide ako su slicni
-    std::map<int, std::vector<std::string>> merged_centroids = group_sequences(new_centroids, 10);
+    std::map<int, std::vector<std::string>> merged_centroids = group_sequences(new_centroids, atoi(argv[10]));
 
     clusters = merge_clusters(merged_centroids, cluster_map);
 
-    std::map<int, std::vector<std::string>> filtered_clusters = filter_clusters(clusters, 0);
+    std::map<int, std::vector<std::string>> filtered_clusters = filter_clusters(clusters, atoi(argv[11]));
     fprintf(stderr, "Number of filtered clusters (%zu)\n", filtered_clusters.size());
 
     std::map<int, std::vector<std::string>> final_clusters = clean_clusters(filtered_clusters);
 
     std::vector<std::string> consensuses = find_allels(final_clusters, atoi(argv[1]), atoi(argv[2]), atoi(argv[3]), atoi(argv[4]), atoi(argv[5]));
 
-    int test = 1;
-
-    if (test)
+    std::ofstream outfile (argv[12]);
+    for (const auto &it : consensuses)
     {
-
-        std::vector<std::string> expected = readFastaFile("./J29B_expected.fasta");
-
-        test_results(expected, consensuses);
-    }
-    else
-    {
-
-        for (const auto &it : consensuses)
-        {
-            fprintf(stderr, "Alel (%zu)\n", it.size());
-            fprintf(stderr, "%s\n\n", it.c_str());
-        }
+        fprintf(stderr, "Alel (%zu)\n", it.size());
+        fprintf(stderr, "%s\n\n", it.c_str());
+        outfile << "Alel size: " << it.size() << std::endl;
+        outfile << it.c_str() << std::endl;
     }
 }
