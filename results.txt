@@ -1,0 +1,35 @@
+MetodaB
+./method_B 2 1 -1 -1 -1 files/fastq/J29_B_CE_IonXpress_005.fastq 5 30 15 10 5 output.txt
+J29
+Acc: 100.00% (249/249)
+Acc: 99.60% (248/249)
+Acc: 94.78% (236/249)
+
+J30
+Acc: 100.00% (249/249)
+Acc: 99.60% (248/249)
+Acc: 98.80% (246/249)
+
+
+./method_B 2 1 -1 -1 -1 files/fastq/J29_B_CE_IonXpress_005.fastq 5 30 30 15 5 output.txt
+J29 - nađe 4 alela
+Acc: 100.00% (249/249)
+Acc: 100.00% (249/249) s jednim -
+Acc: 100.00% (249/249)
+
+J30 - nađe 3 alela
+Acc: 100.00% (249/249)
+Acc: 99.60% (248/249)
+Acc: 98.80% (246/249)
+
+./method_B 2 1 -1 -1 -1 files/fastq/J29_B_CE_IonXpress_005.fastq 5 30 29 17 6 output.txt
+J29 - nađe 3 alela
+Acc: 100.00% (249/249)
+Acc: 100.00% (249/249)
+Acc: 100.00% (249/249)
+
+J30 - nađe 3 alela
+Acc: 100.00% (249/249)
+Acc: 99.60% (248/249)
+Acc: 98.80% (246/249)
+

@@ -12,3 +12,5 @@ g++ -c rough_method.cpp -Ispoa/include -Lspoa/build/lib -lspoa -o build/rough_me
 g++ build/rough_method.o build/distance_functions.o build/readers.o build/test.o build/utils.o -Ispoa/include -Lspoa/build/lib -lspoa -o rough_method
 g++ -c big_punishment.cpp -Ispoa/include -Lspoa/build/lib -lspoa -o build/big_punishment.o
 g++ build/big_punishment.o build/distance_functions.o build/readers.o build/test.o build/utils.o -Ispoa/include -Lspoa/build/lib -lspoa -o big_punishment
+g++ -c result_compare.cpp -o build/result_compare.o
+g++ build/result_compare.o build/distance_functions.o build/readers.o build/test.o build/utils.o -Ispoa/include -Lspoa/build/lib -lspoa -o result_compare
