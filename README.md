@@ -73,7 +73,7 @@ Clustering sequenced genes
 
 ``g++ dbscan_method/dbscan_postprocess.cpp -Ispoa/include -Lspoa/build/lib -lspoa -o dbscan_method/dbscan_postprocess``
 
-
+All compilations are put together in script compile.sh which does all the work.
 ### Running programs
 
 ##### 1. Big punishment method
