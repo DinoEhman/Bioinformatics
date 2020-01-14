@@ -8,6 +8,14 @@
 #include "utils/distance_functions.h"
 #include "utils/utils.h"
 
+
+/**
+* @author Lovre Budimir
+* Create clusters for new centroids that are close to each other
+*
+* @param new cetroids, k
+* @return clustered new centroids
+*/
 std::map<int, std::vector<std::string>> group_sequences(std::vector<std::string> msa, int k)
 {
 

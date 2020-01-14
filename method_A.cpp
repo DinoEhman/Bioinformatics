@@ -9,9 +9,6 @@
 #include "utils/utils.h"
 #include "utils/test.h"
 
-// metoda pronalzi u potpunosti J29B-1_M13F-pUC i J29B-3_M13F-pUC, ali ne J29B-6_M13F-pUC za J29_B_CE_IonXpress_005
-// metoda za jelenref01 napravi jednu zamjenu, jelenref02 u potpunosti, a kod jelenref04 jedno umetanje viska, 2 nepotrebna brisanja i 2 zamjene za J30_B_CE_IonXpress_006
-
 int main(int argc, char **argv)
 {
 

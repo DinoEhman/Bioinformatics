@@ -172,6 +172,14 @@ std::map<int, std::vector<std::string>> create_clusters(std::vector<std::string>
     return clusters;
 }
 
+
+/**
+* @author Lovre Budimir
+* generate consensus for every cluster using SPOA
+*
+* @param clusters, alignment parameters
+* @return consensuses
+*/
 std::vector<std::string> find_allels(std::map<int, std::vector<std::string>> clusters,  int alg, int m, int n, int g, int e){
 
     std::vector<std::string> consensuses;
@@ -206,6 +214,14 @@ std::vector<std::string> find_allels(std::map<int, std::vector<std::string>> clu
 
 }
 
+
+/**
+* @author Lovre Budimir
+* merge clusters that have similiar consenuses
+*
+* @param merged consensuses, cluster map
+* @return merged clusters
+*/
 std::map<int, std::vector<std::string>> merge_clusters(std::map<int, std::vector<std::string>> merged_centroids, std::map<std::string, std::vector<std::string>> cluster_map) {
 
     std::map<int, std::vector<std::string>> merged_clusters;
