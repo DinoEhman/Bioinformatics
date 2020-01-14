@@ -37,6 +37,10 @@ Clustering sequenced genes
 
 ### Compiling methods
 
+After you clone the repository you will need to install spoa from https://github.com/rvaser/spoa and place in Bioinformatics directory.
+
+All compilations are put together in script __compile.sh__ which does all the work or you can run it manualy one by one.
+
 ``g++ -c utils/distance_functions.cpp -o build/distance_functions.o``
 
 ``g++ -c utils/readers.cpp -o build/readers.o``
@@ -73,7 +77,7 @@ Clustering sequenced genes
 
 ``g++ dbscan_method/dbscan_postprocess.cpp -Ispoa/include -Lspoa/build/lib -lspoa -o dbscan_method/dbscan_postprocess``
 
-All compilations are put together in script compile.sh which does all the work.
+
 ### Running programs
 
 ##### 1. Big punishment method
