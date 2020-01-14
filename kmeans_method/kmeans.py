@@ -1,3 +1,5 @@
+import sys
+
 '''
 Numerize method turns a sequence of letters to sequence of numbers
 '''
@@ -40,25 +42,23 @@ def denumerize(line):
 
 
 # Open the file with aligned sequences
-with open('kmeans_data.txt', 'r') as file:  
+with open(sys.argv[1], 'r') as file:  
     lines = file.readlines()
     
 # First line in document contains the number of classes
-k = int(lines[0].split("=")[1].strip())
-print(k)
+k = int(lines[0])
+print("K:",k)
 
 msa = []
 
+# Turn aligned sequences to vectors of numbers
 for i in range(1,len(lines)):
     line = lines[i]
     numerized = numerize(line)
     msa.append(numerized)
     
-print(msa)
+#print(msa)
 
-# Turn aligned sequences to vectors of numbers
-for m in msa:
-    print(denumerize(m))
 
 from sklearn.cluster import KMeans
 import numpy as np
@@ -68,7 +68,7 @@ X = np.array(msa)
 # We use KMeans algorithm from sklearn library
 kmeans = KMeans(n_clusters=k, random_state=0).fit(X)
 labels = kmeans.labels_
-print(labels)
+#print(labels)
 
 clusters = {}
 
@@ -83,10 +83,10 @@ for i in range(len(msa)):
     
     clusters[label].append(m)
     
-print(clusters)
+#print(clusters)
 
 # Write clusters to a file
-with open('output.txt', 'x') as file:  # Use file to refer to the file object
+with open(sys.argv[2], 'w') as file:  # Use file to refer to the file object
     for key in clusters:
         values = clusters[key]
         

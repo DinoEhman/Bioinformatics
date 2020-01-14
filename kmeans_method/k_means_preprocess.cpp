@@ -156,7 +156,7 @@ std::map<int, std::string> init_clusters(std::vector<std::string> msa, int k){
 
 int main(int argc, char **argv){
 
-    std::vector<std::string> allSequences = readFastQFile("./fastq/J29_B_CE_IonXpress_005.fastq");
+    std::vector<std::string> allSequences = readFastQFile(argv[6]);
 
     std::vector<std::string> sequences = find_sequences_with_most_common_length_plus_minus_n(allSequences, 5);
 
@@ -177,7 +177,7 @@ int main(int argc, char **argv){
     //pronadi sekvence koje su udaljene jedne od drugih za barem 30 i postavi ih kao pocetne centroide
     std::map<int, std::string> centroids = init_clusters(msa, 30);
 
-    std::ofstream outfile ("kmeans_data.txt");
+    std::ofstream outfile (argv[7]);
 
     std::string number_of_clusters = std::to_string(centroids.size());
     outfile << number_of_clusters << std::endl;

@@ -60,11 +60,12 @@ std::map<int, std::vector<std::string>> clean_clusters(std::map<int, std::vector
     
 int main(int argc, char **argv){
 
-    std::map<int, std::vector<std::string>> clusters = readKmeansOutput("./output.txt");
+    std::map<int, std::vector<std::string>> clusters = readKmeansOutput(argv[6]);
 
     std::map<int, std::vector<std::string>> final_clusters = clean_clusters(clusters);
     
-    
+    std::vector<std::string> consensuses; 
+
     for(std::map<int, std::vector<std::string>>::iterator it = final_clusters.begin(); it != final_clusters.end(); it++){
 
         std::vector<std::string> cluster_sequences = it->second;
@@ -81,8 +82,17 @@ int main(int argc, char **argv){
         }
 
         std::string consensus2 = graph2->generate_consensus();
-        fprintf(stderr, "Alel (%zu)\n", consensus2.size());
-        fprintf(stderr, "%s\n\n", consensus2.c_str());
+        //fprintf(stderr, "Alel (%zu)\n", consensus2.size());
+        //fprintf(stderr, "%s\n\n", consensus2.c_str());
+	consensuses.push_back(consensus2);
+    }
 
+    std::ofstream outfile (argv[7]);
+    for (const auto &it : consensuses)
+    {
+        fprintf(stderr, "Alel (%zu)\n", it.size());
+        fprintf(stderr, "%s\n\n", it.c_str());
+        outfile << "Alel size: " << it.size() << std::endl;
+        outfile << it.c_str() << std::endl;
     }
 }
