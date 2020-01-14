@@ -12,24 +12,28 @@ Clustering sequenced genes
 ### Results on test set:
 
 ##### 1. Big punishment method
-J29 - finds 2 expected alels completely but not third one
-J30 - finds first alel completely, second one with 1 change but doesn't find third expected alel
+J29 - finds 2 expected alleles completely but not third one
+J30 - finds first allele completely, second one with 1 change but doesn't find third expected allele
 
 ##### 2. Rough method
-J29 - finds 2 expected alels completely but not third one
-J30 - finds first alel completely, second one with 1 change and third expected alel with 1 change, 2 deletion and 1 insertion
+J29 - finds 2 expected alleles completely but not third one
+J30 - finds first allele completely, second one with 1 change and third expected allele with 1 change, 2 deletion and 1 insertion
 
 ##### 3. Method A
+J29 - finds 2 expected alleles completely but not third one
+J30 - finds first allele completely, second one with 1 change and third expected allele with 1 change, 2 deletion and 1 insertion
 
-###### 4. Method B
+##### 4. Method B
+J29 - finds first and third alleles completly and second one with 1 insertion
+J30 - finds first and second allele completely, and third expected allele with 1 change, 2 deletion and 1 insertion
 
 ##### 5. Kmeans method
-J29 - finds first alel with 1 insertion, second one with 1 insertion but doesn't find third expected alel
-J30 - finds first alel completely, second one with 1 change but doesn't find third expected alel
+J29 - finds first allele with 1 insertion, second one with 1 insertion but doesn't find third expected allele
+J30 - finds first allele completely, second one with 1 change but doesn't find third expected allele
 
 ##### 6. DBSCAN method
-J29 - finds first alel completely, second one with 1 change and third alel with 1 deletion
-J30 - finds first alel completely, second one with 1 change and third alel with 1 insertion, 1 change and 2 deletion
+J29 - finds first allele completely, second one with 1 change and third allele with 1 deletion
+J30 - finds first allele completely, second one with 1 change and third allele with 1 insertion, 1 change and 2 deletion
 
 ### Compiling methods
 
