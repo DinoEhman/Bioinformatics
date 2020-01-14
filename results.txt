@@ -58,3 +58,20 @@ Acc: 100.00% (249/249)
 Acc: 99.60% (248/249)
 Acc: 98.80% (246/249) + 3 '-'
 
+./method_B 1 0 -1 -1 -1 files/fastq/J30_B_CE_IonXpress_006.fastq 5 30 10 16 6 output.txt
+
+J30
+Acc: 100.00% (249/249)
+Acc: 100.00% (249/249)
+Acc: 98.80% (246/249)
+
+./method_A 1 0 -1 -1 -1 files/fastq/J29_B_CE_IonXpress_005.fastq 5 30 15 5 output.txt
+J29
+Acc: 100.00% (249/249)
+Acc: 100.00% (249/249)
+
+./method_A 1 0 -1 -1 -1 files/fastq/J30_B_CE_IonXpress_006.fastq 5 30 15 5 output.txt
+J30
+Acc: 100.00% (249/249)
+Acc: 99.60% (248/249)
+Acc: 98.80% (246/249)
