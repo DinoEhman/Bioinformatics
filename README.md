@@ -24,7 +24,7 @@ Clustering sequenced genes
 - J30 - finds first allele completely, second one with 1 change and third expected allele with 1 change, 2 deletion and 1 insertion
 
 ##### 4. Method B
-- J29 - finds first and third alleles completly and second one with 1 insertion
+- J29 - finds first and third alleles completely and second one with 1 insertion
 - J30 - finds first and second allele completely, and third expected allele with 1 change, 2 deletion and 1 insertion
 
 ##### 5. Kmeans method
@@ -39,7 +39,7 @@ Clustering sequenced genes
 
 After you clone the repository you will need to install spoa from https://github.com/rvaser/spoa in Bioinformatics directory.
 
-All compilations are put together in script __compile.sh__ which does all the work or you can run it manualy one by one.
+All compilations are put together in script __compile.sh__ which does all the work or you can run it manually one by one.
 
 ``g++ -c utils/distance_functions.cpp -o build/distance_functions.o``
 
