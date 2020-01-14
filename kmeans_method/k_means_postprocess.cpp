@@ -5,6 +5,13 @@
 #include <algorithm>
 #include "spoa/spoa.hpp"
 
+/**
+ * @author Luka Justić
+ * Reads clustered sequences created by kmeans method and stores them in clusters (set of strings)
+ * 
+ * @param file path
+ * @return map with vectors of strings elements
+ */
 std::map<int, std::vector<std::string>> readKmeansOutput(std::string file){
 
     std::ifstream output(file);
@@ -57,7 +64,15 @@ std::map<int, std::vector<std::string>> clean_clusters(std::map<int, std::vector
 
     return clusters;
 }
-    
+
+/**
+ * @author Luka Justić
+ * Read output of kmeans algorithm
+ * Clean clusters by removing "-" character.
+ * Generate concenzus for every cluster.
+ * Write concenzus to a file.
+ */
+
 int main(int argc, char **argv){
 
     std::map<int, std::vector<std::string>> clusters = readKmeansOutput(argv[6]);
@@ -82,8 +97,6 @@ int main(int argc, char **argv){
         }
 
         std::string consensus2 = graph2->generate_consensus();
-        //fprintf(stderr, "Alel (%zu)\n", consensus2.size());
-        //fprintf(stderr, "%s\n\n", consensus2.c_str());
 	consensuses.push_back(consensus2);
     }
 

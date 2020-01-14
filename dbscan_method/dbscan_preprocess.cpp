@@ -94,6 +94,13 @@ std::vector<std::string> find_sequences_with_most_common_length_plus_minus_n(std
 
 }
 
+
+/**
+ * @author Luka Justić
+ * Read sequences from fastq file.
+ * Filter sequences by length.
+ * Write sequences to a file.
+ */
 int main(int argc, char **argv){
 
     std::vector<std::string> allSequences = readFastQFile(argv[1]);

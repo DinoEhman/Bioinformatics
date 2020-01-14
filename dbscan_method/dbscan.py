@@ -26,12 +26,14 @@ path_to_data = sys.argv[1]
 data = load_data(path_to_data)
 print("dbscan started with",len(data),"alels")
 
+# Calculate lehvenshtein distance
 def lev_metric(x, y):
      i, j = int(x[0]), int(y[0])     # extract indices
      return levenshtein(data[i], data[j])
 
 X = np.arange(len(data)).reshape(-1, 1)
 
+# Run dbscan algorithm
 items, labels = dbscan(X, metric=lev_metric, eps=int(sys.argv[2]), min_samples=int(sys.argv[3]), algorithm='brute')
 
 clusters = {}

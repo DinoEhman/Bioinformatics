@@ -154,6 +154,14 @@ std::map<int, std::string> init_clusters(std::vector<std::string> msa, int k){
 
 }
 
+/**
+ * @author Luka Justić
+ * Read sequences from fastq file.
+ * Filter sequences by length.
+ * Generate multiple sequence aligments of filtered sequences.
+ * Initialize clusters and find the number of clusters.
+ * Write aligned sequences to a file
+ */
 int main(int argc, char **argv){
 
     std::vector<std::string> allSequences = readFastQFile(argv[6]);

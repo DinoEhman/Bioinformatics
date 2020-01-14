@@ -5,6 +5,13 @@
 #include <algorithm>
 #include "spoa/spoa.hpp"
 
+/**
+ * @author Luka Justić and Dino Ehman
+ * Reads clustered sequences created by dbscan method and stores them in clusters (set of strings)
+ * 
+ * @param file path
+ * @return map with vectors of strings elements
+ */
 std::map<int, std::vector<std::string>> readKmeansOutput(std::string file)
 {
 
@@ -36,6 +43,11 @@ std::map<int, std::vector<std::string>> readKmeansOutput(std::string file)
     return clusters;
 }
 
+/**
+ * @author Luka Justić
+ * Read output of kmean method.
+ * For every cluster generate concenzus and write it to a fasta file.
+ */
 int main(int argc, char **argv)
 {
 

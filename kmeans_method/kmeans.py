@@ -1,6 +1,7 @@
 import sys
 
 '''
+@ Luka Justić
 Numerize method turns a sequence of letters to sequence of numbers
 '''
 def numerize(line):
@@ -21,6 +22,7 @@ def numerize(line):
     return numerized
 
 '''
+@ Luka Justić
 Denumerize method turns a sequence od numbers to a string of letters
 '''
 def denumerize(line):
@@ -40,6 +42,9 @@ def denumerize(line):
             
     return denumerized
 
+'''
+@ Luka Justić
+'''
 
 # Open the file with aligned sequences
 with open(sys.argv[1], 'r') as file:  
