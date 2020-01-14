@@ -63,8 +63,6 @@ int main(int argc, char **argv)
 
     fprintf(stderr, "Number of input sequences (%zu)\n", sequences.size());
 
-    // 2. korak
-    // parametri: AlignmentType (0 - lokalno, 1 - globalno, 2 - poluglobalno), m (podudaranje), n (zamjena), g (umetanje), e (brisanje)
     auto alignment_engine = spoa::createAlignmentEngine(static_cast<spoa::AlignmentType>(atoi(argv[1])),
                                                         atoi(argv[2]), atoi(argv[3]), atoi(argv[4]), atoi(argv[5]));
 
@@ -79,14 +77,8 @@ int main(int argc, char **argv)
     std::vector<std::string> msa;
     graph->generate_multiple_sequence_alignment(msa);
 
-    //3. korak
     std::map<int, std::vector<std::string>> clusters = group_sequences(msa, atoi(argv[8]));
     fprintf(stderr, "Number of clusters (%zu)\n", clusters.size());
-
-    // for (std::map<int, std::vector<std::string>>::iterator it = clusters.begin(); it != clusters.end(); ++it)
-    // {
-    //     fprintf(stderr, "(%zu) ", (it->second).size());
-    // }
 
     clusters = clean_clusters(clusters);
 

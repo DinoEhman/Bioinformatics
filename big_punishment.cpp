@@ -51,6 +51,13 @@ std::vector<std::string> find_sequences_with_most_common_length(std::vector<std:
     return result;
 }
 
+/**
+* @author Lovre Budimir
+* Clustering of msa elements
+*
+* @parammsa
+* @return clusters
+*/
 std::map<int, std::vector<std::string>> group_sequences(std::vector<std::string> msa, int k)
 {
 
@@ -101,15 +108,12 @@ int main(int argc, char **argv)
 {
     std::vector<std::string> allSequences = readFastQFile(argv[6]);
 
-    // 1. korak
     std::vector<std::string> sequences = find_sequences_with_most_common_length(allSequences); //1
 
     fprintf(stderr, "Number of input sequences (%zu)\n", sequences.size());
 
     fprintf(stderr, "Most common size (%zu)\n", (*sequences.begin()).size());
 
-    // 2. korak
-    // parametri: AlignmentType (0 - lokalno, 1 - globalno, 2 - poluglobalno), m (podudaranje), n (zamjena), g (umetanje), e (brisanje)
     auto alignment_engine = spoa::createAlignmentEngine(static_cast<spoa::AlignmentType>(atoi(argv[1])),
                                                         atoi(argv[2]), atoi(argv[3]), atoi(argv[4]), atoi(argv[5]));
 
@@ -124,7 +128,6 @@ int main(int argc, char **argv)
     std::vector<std::string> msa;
     graph->generate_multiple_sequence_alignment(msa);
 
-    //3. korak
     std::map<int, std::vector<std::string>> clusters = group_sequences(msa, atoi(argv[7]));
     fprintf(stderr, "Number of clusters (%zu)\n", clusters.size());
 

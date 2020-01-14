@@ -29,7 +29,6 @@ int main(int argc, char **argv)
     std::vector<std::string> msa;
     graph->generate_multiple_sequence_alignment(msa);
 
-    //pronadi sekvence koje su udaljene jedne od drugih za barem 30 i postavi ih kao pocetne centroide
     std::map<int, std::string> centroids = init_clusters(msa, atoi(argv[8]));
 
     std::map<int, std::vector<std::string>> clusters = create_clusters(msa, centroids, atoi(argv[9]));
