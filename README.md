@@ -21,7 +21,7 @@ J30 - finds first alel completely, second one with 1 change and third expected a
 
 ##### 3. Method A
 
-######4. Method B
+###### 4. Method B
 
 ##### 5. Kmeans method
 J29 - finds first alel with 1 insertion, second one with 1 insertion but doesn't find third expected alel
