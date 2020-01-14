@@ -37,7 +37,7 @@ Clustering sequenced genes
 
 ### Compiling methods
 
-After you clone the repository you will need to install spoa from https://github.com/rvaser/spoa and place in Bioinformatics directory.
+After you clone the repository you will need to install spoa from https://github.com/rvaser/spoa in Bioinformatics directory.
 
 All compilations are put together in script __compile.sh__ which does all the work or you can run it manualy one by one.
 
