@@ -99,12 +99,20 @@ int main(int argc, char **argv)
     fprintf(stderr, "Number of filtered clusters (%zu)\n", filtered_clusters.size());
 
     std::map<int, std::vector<std::string>> final_clusters = clean_clusters(filtered_clusters);
+  
+    for (auto it = final_clusters.begin(); it != final_clusters.end();it++) {
+        int cluster = it->first;
+        for(auto s : it->second) {
+            std::cout << cluster << std::endl << s << std::endl;
+        }
+    }
 
     std::vector<std::string> consensuses = find_allels(final_clusters, atoi(argv[1]), atoi(argv[2]), atoi(argv[3]), atoi(argv[4]), atoi(argv[5]));
 
     std::ofstream outfile (argv[12]);
     for (const auto &it : consensuses)
     {
+        std::cout << std::endl << std::endl;
         fprintf(stderr, "Alel (%zu)\n", it.size());
         fprintf(stderr, "%s\n\n", it.c_str());
         outfile << "Alel size: " << it.size() << std::endl;

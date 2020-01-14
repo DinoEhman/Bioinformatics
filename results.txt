@@ -33,3 +33,28 @@ Acc: 100.00% (249/249)
 Acc: 99.60% (248/249)
 Acc: 98.80% (246/249)
 
+Big Punishment
+./big_punishment 1 0 -1 -100 -100 files/fastq/J29_B_CE_IonXpress_005.fastq 10 5 output.txt
+J29
+Acc: 100.00% (249/249)
+Acc: 100.00% (249/249)
+-third not found
+
+./big_punishment 1 0 -1 -100 -100 files/fastq/J30_B_CE_IonXpress_006.fastq 10 10 output.txt
+J30
+Acc: 100.00% (249/249)
+Acc: 99.60% (248/249)
+-third not found
+
+./rough_method 1 0 -1 -1 -1 files/fastq/J29_B_CE_IonXpress_005.fastq 5 15 80 output.txt 
+J29
+Acc: 100.00% (249/249)
+Acc: 100.00% (249/249)
+-third found alel is bad
+
+./rough_method 1 0 -1 -1 -1 files/fastq/J30_B_CE_IonXpress_006.fastq 5 15 10 output.txt 
+J30
+Acc: 100.00% (249/249)
+Acc: 99.60% (248/249)
+Acc: 98.80% (246/249) + 3 '-'
+

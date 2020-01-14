@@ -16,3 +16,5 @@ g++ -c result_compare.cpp -o build/result_compare.o
 g++ build/result_compare.o build/distance_functions.o build/readers.o build/test.o build/utils.o -Ispoa/include -Lspoa/build/lib -lspoa -o result_compare
 g++ kmeans_method/k_means_preprocess.cpp -Ispoa/include/ -Lspoa/build/lib -lspoa -o kmeans_method/k_means_preprocess
 g++ kmeans_method/k_means_postprocess.cpp -Ispoa/include/ -Lspoa/build/lib -lspoa -o kmeans_method/k_means_postprocess
+g++ dbscan_method/dbscan_preprocess.cpp -Ispoa/include -Lspoa/build/lib -lspoa -o dbscan_method/dbscan_preprocess
+g++ dbscan_method/dbscan_postprocess.cpp -Ispoa/include -Lspoa/build/lib -lspoa -o dbscan_method/dbscan_postprocess

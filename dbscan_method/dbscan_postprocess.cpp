@@ -5,7 +5,8 @@
 #include <algorithm>
 #include "spoa/spoa.hpp"
 
-std::map<int, std::vector<std::string>> readKmeansOutput(std::string file){
+std::map<int, std::vector<std::string>> readKmeansOutput(std::string file)
+{
 
     std::ifstream output(file);
     std::map<int, std::vector<std::string>> clusters;
@@ -33,21 +34,23 @@ std::map<int, std::vector<std::string>> readKmeansOutput(std::string file){
         }
     }
     return clusters;
-
 }
-    
-int main(int argc, char **argv){
+
+int main(int argc, char **argv)
+{
 
     std::map<int, std::vector<std::string>> clusters = readKmeansOutput(argv[6]);
 
     std::cout << clusters.size() << std::endl;
-    
-    for(std::map<int, std::vector<std::string>>::iterator it = clusters.begin(); it != clusters.end(); it++){
+    std::vector<std::string> consensuses;
+
+    for (std::map<int, std::vector<std::string>>::iterator it = clusters.begin(); it != clusters.end(); it++)
+    {
 
         std::vector<std::string> cluster_sequences = it->second;
 
         auto alignment_engine2 = spoa::createAlignmentEngine(static_cast<spoa::AlignmentType>(atoi(argv[1])),
-                                                        atoi(argv[2]), atoi(argv[3]), atoi(argv[4]), atoi(argv[5]));
+                                                             atoi(argv[2]), atoi(argv[3]), atoi(argv[4]), atoi(argv[5]));
 
         auto graph2 = spoa::createGraph();
 
@@ -58,8 +61,15 @@ int main(int argc, char **argv){
         }
 
         std::string consensus2 = graph2->generate_consensus();
-        fprintf(stderr, "Alel (%zu)\n", consensus2.size());
-        fprintf(stderr, "%s\n\n", consensus2.c_str());
-
+        consensuses.push_back(consensus2);
+    }
+    
+    std::ofstream outfile(argv[7]);
+    for (const auto &it : consensuses)
+    {
+        fprintf(stderr, "Alel (%zu)\n", it.size());
+        fprintf(stderr, "%s\n\n", it.c_str());
+        outfile << "Alel size: " << it.size() << std::endl;
+        outfile << it.c_str() << std::endl;
     }
 }
